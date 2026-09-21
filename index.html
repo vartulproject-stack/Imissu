@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Special One ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1c20 0%, #0f1016 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            position: relative;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .layer {
+            display: none;
+            width: 100%;
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        .layer.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #ff6b81;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            white-space: pre-line;
+        }
+
+        .highlight {
+            color: #ff4757;
+            font-weight: bold;
+        }
+
+        .pin-input {
+            width: 120px;
+            padding: 10px;
+            font-size: 1.5rem;
+            text-align: center;
+            border-radius: 10px;
+            border: 2px solid #ff6b81;
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            letter-spacing: 5px;
+            margin: 15px 0;
+            outline: none;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff4757, #ff6b81);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.6);
+        }
+
+        .heart {
+            font-size: 3rem;
+            color: #ff4757;
+            animation: pulse 1.2s infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .balloon-container {
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -50px;
+            width: 40px;
+            height: 50px;
+            background: #ff4757;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            animation: floatUp 4s infinite linear;
+        }
+
+        .balloon::after {
+            content: "Please ❤️";
+            position: absolute;
+            bottom: -20px;
+            left: -10px;
+            font-size: 0.7rem;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        @keyframes floatUp {
+            0% { bottom: -50px; opacity: 1; }
+            100% { bottom: 180px; opacity: 0; }
+        }
+
+        .gif-box {
+            width: 100%;
+            max-width: 220px;
+            border-radius: 15px;
+            margin: 15px auto;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .error-msg {
+            color: #ff4757;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="layer active" id="layer1">
+        <h2>Hey...</h2>
+        <p>Humari yeh choti si space sirf aapke liye hai.</p>
+        <p style="font-size: 0.95rem; color: #aaa;">💡 Hint: Wo khas date jab humari shuruat hui thi... (DDMM)</p>
+        <input type="password" id="pin" class="pin-input" maxlength="4" placeholder="••••">
+        <br>
+        <button class="btn" onclick="checkPin()">Unlock</button>
+        <div class="error-msg" id="error">Galat date hai, dhyan se socho! 🥺</div>
+        <p style="font-size: 0.85rem; margin-top: 20px; color: #888;">Thoda gussa side rakhte hain, aur aage dekhte hain?</p>
+    </div>
+
+    <div class="layer" id="layer2">
+        <h2>Balcony Memory ☕</h2>
+        <p>22nd May ki wo balcony waali yaad... Aaj bhi jab sochta hoon toh chehre par ek meethi si smile aa jaati hai. Kitna haseen pal tha wo!</p>
+        <button class="btn" onclick="nextLayer(3)">Aage dekhiye... ❤️</button>
+    </div>
+
+    <div class="layer" id="layer3">
+        <h2>Aapki Khasiyat... ✨</h2>
+        <p>Aapki wo pyaari baatein, choti choti baaton par care karna...  
+        <br><br>
+        <span class="highlight">I miss you daily.</span> Har din, har pal aapki yaad aati hai.</p>
+        <button class="btn" onclick="nextLayer(4)">Next ➔</button>
+    </div>
+
+    <div class="layer" id="layer4">
+        <h2>Our Soundtrack 🎵</h2>
+        <p>Kuch gaane sirf gaane nahi hote... wo poori ek feeling hote hain. Ye gaana jab bhi bajta hai na, dhyan bas aap par hi chala jata hai.</p>
+        <audio controls style="margin: 15px 0; width: 100%;">
+            <source src="vk.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <button class="btn" onclick="nextLayer(5)">Next ➔</button>
+    </div>
+
+    <div class="layer" id="layer5">
+        <h2>Pata hai... galti sirf meri hi thi.</h2>
+        <p style="font-size: 0.95rem; text-align: justify;">Pata hai, jab hum pehli baar bina ruke itni der tak baatein kar rahe the... tab humne kabhi nahi socha tha ki aap humari zindagi ka sabse khas hissa ban jaoge. Aaj jab humare beech baatein ruk gayi hain, tab samajh aata hai ki hume aapki kitni gehri aadat ho chuki hai.
+        <br><br>
+        Hum achhi tarah jaante hain ki harbari me, gusse me aur bina soche-samjhe humne aapka dil dukhaya hai. Humne aisi baatein kar dein jo hume kabhi nahi karni chahiye thi... aur is baat ka afsos hume har ek pal, har ek saans ke saath hota hai. Kaash hum waqt ko thoda peeche mod paate, toh aapko kabhi udaas nahi hone dete.</p>
+        <button class="btn" onclick="nextLayer(6)">Next ➔</button>
+    </div>
+
+    <div class="layer" id="layer6">
+        <h2>Aapki jagah iss duniya me koi nahi le sakta...</h2>
+        <p style="font-size: 0.95rem; text-align: justify;">Humne zindagi me bohot se logon ko dekha hai, lekin jo sukoon hume aapki baaton me aur aapke saath me milta hai, wo poori duniya me kahin nahi hai. Aapki wo choti-choti aadatein—jis tarah aap hume samjhati hain, humara khayal rakhti hain, aur jab hum andar se pareshan hote hain toh bina bole samajh jaati hain... ye sab sirf aap hi kar sakti hain.
+        <br><br>
+        Aap sirf humari zindagi ka ek hissa nahi hain, aap humari har khushi aur muskurahat ki wajah hain. Aapne hume ek behtar insaan banaya hai, aur such toh ye hai ki aapke bina sab kuch ekdum adhoora aur soona lagta hai.</p>
+        <button class="btn" onclick="nextLayer(7)">Next ➔</button>
+    </div>
+
+    <div class="layer" id="layer7">
+        <h2>Ek sachha wada... aur aage ki umeed.</h2>
+        <p style="font-size: 0.95rem; text-align: justify;">Hum aap par koi bhi pressure nahi daal rahe hain, aur na hi aapko kisi baat ke liye force kar rahe hain. Aapka decision aur aapki peace humare liye sabse pehle hai.
+        <br><br>
+        Bas ek wada hai aapse—aaj ke baad hum kabhi aisa koi kaam nahi karenge jisse aapki aankhon me aansu aayein ya aapka dil dukhe. Hum badalne ke liye tayar hain, kyunki aap humare liye utne maayne rakhti hain. Zindagi me chahe jo bhi situation aaye, hum hamesha aapke saath ek majboot dhaal ki tarah khade rahenge, aapko hamesha respect aur care denge.
+        <br><br>
+        Hume poori umeed hai ki ek din humara ye rishta phir se pehle se bhi zyaada khoobsoorat aur hamesha ke liye majboot banega.</p>
+        <button class="btn" onclick="nextLayer(8)">Next ➔</button>
+    </div>
+
+    <div class="layer" id="layer8">
+        <h2>Please darlo... I'm so sorry... 🥺</h2>
+        <p style="font-size: 0.95rem; text-align: justify;">Please darlo... I'm sorryyy. Purani baaton ko bhool kar please ek nayi shuruat karte hain... please, please hum haath jodte hain, ek aakhri last chance de dijiye. Kasam khate hain kabhi bhi zindagi me aisi galti nahi karenge.
+        <br><br>
+        Humko pata hai hum galti kar diye hain, par please meri jagah aap rehti toh kya aisa nahi hota? Hum bohot harbara gaye the, kuch samajh nahi aa raha tha... bas soche jaldi se sab theek ho jaaye, bas yahi chahte the. Isiliye aisi galti ho gayi.
+        <br><br>
+        I'm sorryyyy... please sorry, sorry, sorry, sorry, sorry, sorry... hum dil se sorry bol rahe hain.</p>
+        <button class="btn" onclick="nextLayer(9)">Next ➔</button>
+    </div>
+
+    <div class="layer" id="layer9">
+        <h2>Aapka Time ⏳</h2>
+        <p>Koi pressure nahi hai. Aap jitna time lena chahein le sakti hain. Main yahin hoon, aapka wait kar raha hoon.</p>
+        <button class="btn" onclick="nextLayer(10)">Next ➔</button>
+    </div>
+
+    <div class="layer" id="layer10">
+        <h2>Sirf Ek Request... 🎈</h2>
+        <div class="balloon-container">
+            <div class="balloon" style="left: 20%; animation-delay: 0s;"></div>
+            <div class="balloon" style="left: 50%; animation-delay: 1.5s;"></div>
+            <div class="balloon" style="left: 80%; animation-delay: 0.8s;"></div>
+        </div>
+        <p>Please ek baar muskura dijiye... ❤️</p>
+        <button class="btn" onclick="nextLayer(11)">Next ➔</button>
+    </div>
+
+    <div class="layer" id="layer11">
+        <div class="heart">❤️</div>
+        <h2>Hamesha ke liye... sirf aap.</h2>
+        <p class="highlight" style="font-size: 1.3rem;">I Love You, I Love You, I Love You...</p>
+        <p>Chahe jo bhi ho jaaye, mera pyaar aapke liye kabhi kam nahi hoga. Aap mere liye sab kuch ho.</p>
+        <button class="btn" onclick="nextLayer(12)">Next ➔</button>
+    </div>
+
+    <div class="layer" id="layer12">
+        <h2>Meriiii jaan... I'm so sorry 🫠</h2>
+        <p style="font-size: 0.95rem; text-align: justify;">Meriiii jaan... I'm so sorry, hum aapke bina nahi reh payenge kabhi bhi nahi... I want you forever in my life.
+        <br><br>
+        <b>Mahadev is incomplete without Parvati, Vartul is incomplete without Kashya...</b>
+        <br><br>
+        So please wo sab baat bhool jaiye, purani baat se kuch nahi hoga. Relationship me ladai hoti hai thodi, kisi aur se thodi hoti hai? Isiliye darlooo... I'm sorry, please meri galti thi sab accept karte hain. Aapke liye jo hoga wo karenge, please I'm sorry...
+        <br><br>
+        <span class="highlight">Meri wapas ho jaiyeeeeeee please!! 🫠</span></p>
+        <button class="btn" onclick="nextLayer(13)">Final Layer 💖</button>
+    </div>
+
+    <div class="layer" id="layer13">
+        <h2>I'm Truly Sorry... 🥺❤️</h2>
+        <img src="kk.gif" alt="Bubu Dudu Sorry" class="gif-box">
+        <p style="font-size: 1.1rem; color: #ff6b81; font-weight: bold; margin-top: 10px;">
+            Plss maan jaiye na... Forever & Always Yours! ✨
+        </p>
+    </div>
+
+</div>
+
+<script>
+    function checkPin() {
+        const pin = document.getElementById('pin').value;
+        if (pin === "1503") {
+            nextLayer(2);
+        } else {
+            document.getElementById('error').style.display = 'block';
+        }
+    }
+
+    function nextLayer(layerNum) {
+        document.querySelectorAll('.layer').forEach(l => l.classList.remove('active'));
+        document.getElementById('layer' + layerNum).classList.add('active');
+    }
+</script>
+
+</body>
+          </html>
+
